@@ -1,39 +1,36 @@
-<div class="form">
-        <label>
-        Username:
-            <input type="text" [formControl]="name">
-        </label>
+<form [formGroup]="userForm" (ngSubmit)="onClick()" class="form">
+    <label>
+    Username:
+        <input type="text" formControlName="name">
+    </label>
+
+    <div formGroupName="credentials">
         <label>
             Email
-            <input type="text" [formControl]="email">
+            <input type="text" formControlName="email">
         </label>
  
         <label>
             Mot de passe
-            <input type="password" [formControl]="password">
+            <input type="password" formControlName="password">
         </label>
+    </div>
+
+    <div formGroupName="address">
         <label>
             Adresse
-            <input class="n" type="text" [formControl]="adress">
+            <input class="n" type="text" formControlName="street">
         </label>
         <label>
             Code Postal
-            <input class="n" type="text" [formControl]="cp">
+            <input class="n" type="text" formControlName="cp">
         </label>
         <label>
             Ville
-            <input class="n" type="text" [formControl]="ville">
+            <input class="n" type="text" formControlName="ville">
         </label>
-        <button (click)="onClick()">Go</button>
-</div>
+    </div>
 
-<div *ngIf="display">
-    <p>{{ name.value }}</p> c
-    <p>{{ email.value }}</p>
-    <p>{{ password.value }}</p>
-    <p>{{ adress.value }}</p>
-    <p>{{ cp.value }}</p>
-    <p>{{ ville.value }}</p>
-</div>
-
+        <button type="submit" [disabled]="!userForm.valid">Go</button>
+</form>
 
