@@ -1,0 +1,25 @@
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="form">
+    <label>
+    Ref
+        <input type="text" formControlName="ref">
+        {{ articleForm.get('ref').errors?.ref.rules }}
+                <div *ngIf="articleForm.get('ref').errors && !articleForm.get('ref').pristine" class="error-msg">
+                    <div [hidden]="!articleForm.get('ref').errors.required">Ref is required.</div>
+                    <div [hidden]="!articleForm.get('ref').errors.ref">MAJ</div>
+        
+                </div>
+    </label>
+
+
+    <label>
+        Name
+        <input type="text" formControlName="name">
+    </label>
+
+    <label>
+        Price
+        <input type="text" formControlName="price">
+    </label>
+
+    <button type="submit" [disabled]="!articleForm.valid">Go</button>
+</form>

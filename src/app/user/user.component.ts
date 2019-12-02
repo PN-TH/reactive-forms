@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { User } from '../user';
+import { passwordValidator } from './password';
+import { emailValidator } from './email';
 
 @Component({
   selector: 'app-user',
@@ -15,8 +17,8 @@ export class UserComponent implements OnInit {
   userForm = this.fb.group({
     name: [''],
     credentials: this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, emailValidator]],
+      password: ['', [Validators.required, passwordValidator]],
     }),
     address: this.fb.group({
       street: [''],
@@ -25,8 +27,6 @@ export class UserComponent implements OnInit {
     })
   });
 
-  display: boolean = false;
-
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -34,6 +34,5 @@ export class UserComponent implements OnInit {
 
   onClick() {
     console.log(this.userForm.value);
-    this.display = true;
 }
 }

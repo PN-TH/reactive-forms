@@ -8,11 +8,17 @@
         <label>
             Email
             <input type="text" formControlName="email">
+            {{ userForm.get('credentials.email').errors?.email.rules }}
+            <div *ngIf="userForm.get('credentials.email').errors && !userForm.get('credentials.email').pristine" class="error-msg">
+            </div>
         </label>
  
         <label>
-            Mot de passe
+            Password:
             <input type="password" formControlName="password">
+            {{ userForm.get('credentials.password').errors?.password.rules }}
+            <div *ngIf="userForm.get('credentials.password').errors && !userForm.get('credentials.password').pristine" class="error-msg">
+            </div>
         </label>
     </div>
 
