@@ -1,0 +1,39 @@
+<div class="form">
+        <label>
+        Username:
+            <input type="text" [formControl]="name">
+        </label>
+        <label>
+            Email
+            <input type="text" [formControl]="email">
+        </label>
+ 
+        <label>
+            Mot de passe
+            <input type="password" [formControl]="password">
+        </label>
+        <label>
+            Adresse
+            <input class="n" type="text" [formControl]="adress">
+        </label>
+        <label>
+            Code Postal
+            <input class="n" type="text" [formControl]="cp">
+        </label>
+        <label>
+            Ville
+            <input class="n" type="text" [formControl]="ville">
+        </label>
+        <button (click)="onClick()">Go</button>
+</div>
+
+<div *ngIf="display">
+    <p>{{ name.value }}</p> c
+    <p>{{ email.value }}</p>
+    <p>{{ password.value }}</p>
+    <p>{{ adress.value }}</p>
+    <p>{{ cp.value }}</p>
+    <p>{{ ville.value }}</p>
+</div>
+
+
